@@ -284,8 +284,3 @@ tcp6       0      0 :::3306                 :::*                    LISTEN      
 
 我本地使用的是 Navicat for MySQL
 ![远程连接数据库](http://otr9a8wg0.bkt.clouddn.com/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8.jpg)
-
-# 上传文件
-
-# Linux中文乱码 （修改默认编码）
-[修改默认编码](http://www.linuxidc.com/Linux/2017-07/145572.htm)
