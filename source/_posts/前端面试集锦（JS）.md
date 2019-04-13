@@ -1,7 +1,7 @@
 ---
 title: 前端面试集锦（JS）
 date: 2019-04-12 17:00:00
-tags: 面试 Javascript
+tags: [面试, Javascript]
 ---
 
 # 一、DOM事件
