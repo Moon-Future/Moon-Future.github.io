@@ -42,3 +42,103 @@ var eve = new Event('test');
 window.addEventListener('test', function() {}, false)
 window.dispatchEvent(eve);
 ```
+
+# 二、原型链类
+## 1、创建对象的几种方法
+```js
+// 第一种方式：字面量
+var o1 = {name: 'o1'}; // 默认原型链指向Object， 类似 var o1 = new Object({name: 'o1'});
+// 第二种方式：通过构造函数
+var M = function(name) {this.name = name};
+var o2 = new M('o2');
+// 第三种方式：Object.create
+var p = {name: 'o3'};
+var o3 = Object.create(p); // p 为新创建对象的原型对象
+```
+
+## 2、原型、构造函数、实例、原型链
+
+## 3、instanceof 的原理
+
+## 4、new 运算符
+- 1、一个新对象被创建，它继承自foo.prototype
+- 2、构造函数 foo 被执行，执行的时候，响应的传参会被传入，同时上下文（this）会被指定为这个新实例。new foo 等同于 new foo()，只能用在不传递任何参数的情况
+- 3、如果构造函数返回了一个“对象”，那么这个对象会取代整个new出来的结果，如果构造函数没有返回对象，那么new出来的结果为步骤1创建的对象
+
+# 三、面向对象
+## 1、类与实例：类的声明，生成实例
+```js
+// 类的声明
+function Animal() {
+  this.name = 'name'
+}
+
+// ES6中的class声明
+class Animal {
+  constructor() {
+    this.name = 'name'
+  }
+}
+
+// 实例化
+new Animal();
+```
+
+## 2、类与继承：如何实现继承，继承的几种方式
+- 借助构造函数实现继承
+  ```js
+  function Parent() {
+    this.name = 'parent';
+  }
+  function Child() {
+    Parent.call(this);
+    this.type = 'child';
+  }
+  // 缺点：Parent的原型链未被继承
+  ```
+- 借助原型链继承
+  ```js
+  function Parent() {
+    this.name = 'parent';
+  }
+  function Child() {
+    this.type = 'child';
+  }
+  Child.prototype = new Parent();
+  // 缺点：对原型中引用类型值的误修改
+  ```
+- 组合方式
+  ```js
+  function Parent() {
+    this.name = 'parent';
+  }
+  function Child() {
+    Parent.call(this);  // 1
+    this.type = 'child';
+  }
+  Child.prototype = new Parent(); // 2
+  // 父级构造函数执行两次
+  ```
+- 组合继承的优化1
+  ```js
+  function Parent() {
+    this.name = 'parent';
+  }
+  function Child() {
+    Parent.call(this);
+    this.type = 'child';
+  }
+  Child.prototype = Parent.prototype;
+  ```
+- 组合继承的优化2
+  ```js
+  function Parent() {
+    this.name = 'parent';
+  }
+  function Child() {
+    Parent.call(this);
+    this.type = 'child';
+  }
+  Child.prototype = Object.create(Parent.prototype);
+  Child.prototype.constructor = Child;
+  ```
