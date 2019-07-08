@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>面试集锦（css）</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .layout {
+      margin-bottom: 20px;
+    }
+    .left {
+      background: #aeeff0;
+      width: 300px;
+      height: 100px;
+    }
+    .center {
+      background: #fa8282;
+      height: 100px;
+    }
+    .right {
+      background: #daa592;
+      width: 300px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 页面布局 -->
+
+  <!-- 一、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应 -->
+  <section class="layout float">
+    <style>
+      .float .left {
+        float: left;
+      }
+      .float .right {
+        float: right;
+      }
+    </style>
+    <article class="left-right-center">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="center">
+         <h1>浮动解决方案</h1>
+      </div>
+    </article>
+  </section>
+
+  <section class="layout absolute">
+    <style>
+      .absolute .left {
+        position: absolute;
+        left: 0;
+      }
+      .absolute .center {
+        position: absolute;
+        left: 300px;
+        right: 300px;
+      }
+      .absolute .right {
+        position: absolute;
+        right: 0;
+      }
+    </style>
+    <article class="left-center-right">
+      <div class="left"></div>
+      <div class="center">
+        <h1>绝对定位解决方案</h1>
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>
+
+  <section class="layout flex">
+    <style>
+      .flex {
+        margin-top: 140px;
+      }
+      .flex .left-center-right {
+        display: flex;
+      }
+      .flex .center {
+        flex: 1;
+      }
+    </style>
+    <article class="left-center-right">
+      <div class="left"></div>
+      <div class="center">
+        <h1>flex解决方案</h1>
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>
+
+  <section class="layout table">
+    <style>
+      .table .left-center-right {
+        width: 100%;
+        display: table;
+      }
+      .table .left-center-right>div {
+        display: table-cell;
+      }
+    </style>
+    <article class="left-center-right">
+      <div class="left"></div>
+      <div class="center">
+        <h1>表格布局解决方案</h1>
+      </div>
+      <div class="right"></div>
+    </article>
+  </section> 
+
+  <section class="layout grid">
+    <style>
+      .grid .left-center-right {
+        display: grid;
+        grid-template-columns: 300px auto 300px;
+      }
+    </style>
+    <article class="left-center-right">
+      <div class="left"></div>
+      <div class="center">
+        <h1>grid解决方案</h1>
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>  
+
+</body>
+</html>
