@@ -28,3 +28,6 @@ tags: [面试, CSS]
 ## 5、实例题（根据盒模型解释边距重叠）
 ## 6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景
 [10 分钟理解 BFC 原理](https://zhuanlan.zhihu.com/p/25321647)
+
+# 三、水平垂直居中
+[16种方法实现水平居中垂直居中](https://juejin.im/post/58f818bbb123db006233ab2a)
