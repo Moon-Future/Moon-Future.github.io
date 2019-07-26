@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-book-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-book-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试,CSS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、页面布局1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应 浮动 绝对定位 flex table-cell grid  若高度不知，哪种方案比较好？ 2、三栏布局，上下高度固定，中间自适应3、两栏布局，左宽度固定，右自适应4、两栏布局，右宽度固定，左自适应4、两栏布局，上高度固定，下自适应5、两栏布局，下高度固定，上自适应二、CSS盒模型1、基本概念：标准模型 +">
+<meta name="keywords" content="面试,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试集锦（CSS）">
+<meta property="og:url" content="http://yoursite.com/2019/04/12/前端面试集锦（CSS）/index.html">
+<meta property="og:site_name" content="假面对白">
+<meta property="og:description" content="一、页面布局1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应 浮动 绝对定位 flex table-cell grid  若高度不知，哪种方案比较好？ 2、三栏布局，上下高度固定，中间自适应3、两栏布局，左宽度固定，右自适应4、两栏布局，右宽度固定，左自适应4、两栏布局，上高度固定，下自适应5、两栏布局，下高度固定，上自适应二、CSS盒模型1、基本概念：标准模型 +">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-26T09:38:52.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试集锦（CSS）">
+<meta name="twitter:description" content="一、页面布局1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应 浮动 绝对定位 flex table-cell grid  若高度不知，哪种方案比较好？ 2、三栏布局，上下高度固定，中间自适应3、两栏布局，左宽度固定，右自适应4、两栏布局，右宽度固定，左自适应4、两栏布局，上高度固定，下自适应5、两栏布局，下高度固定，上自适应二、CSS盒模型1、基本概念：标准模型 +">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/12/前端面试集锦（CSS）/">
+
+
+
+
+
+  <title>前端面试集锦（CSS） | 假面对白</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!-- Fork me on Github -->
+    <a href="https://github.com/Moon-Future/Moon-Future.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">假面对白</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我在这儿等着你</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/12/前端面试集锦（CSS）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="假面对白">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar-super.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="假面对白">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端面试集锦（CSS）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-12T09:30:00+08:00">
+                2019-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、页面布局"><a href="#一、页面布局" class="headerlink" title="一、页面布局"></a>一、页面布局</h1><h2 id="1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应"><a href="#1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应" class="headerlink" title="1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应"></a>1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应</h2><ul>
+<li>浮动</li>
+<li>绝对定位</li>
+<li>flex</li>
+<li>table-cell</li>
+<li>grid</li>
+</ul>
+<p>若高度不知，哪种方案比较好？</p>
+<h2 id="2、三栏布局，上下高度固定，中间自适应"><a href="#2、三栏布局，上下高度固定，中间自适应" class="headerlink" title="2、三栏布局，上下高度固定，中间自适应"></a>2、三栏布局，上下高度固定，中间自适应</h2><h2 id="3、两栏布局，左宽度固定，右自适应"><a href="#3、两栏布局，左宽度固定，右自适应" class="headerlink" title="3、两栏布局，左宽度固定，右自适应"></a>3、两栏布局，左宽度固定，右自适应</h2><h2 id="4、两栏布局，右宽度固定，左自适应"><a href="#4、两栏布局，右宽度固定，左自适应" class="headerlink" title="4、两栏布局，右宽度固定，左自适应"></a>4、两栏布局，右宽度固定，左自适应</h2><h2 id="4、两栏布局，上高度固定，下自适应"><a href="#4、两栏布局，上高度固定，下自适应" class="headerlink" title="4、两栏布局，上高度固定，下自适应"></a>4、两栏布局，上高度固定，下自适应</h2><h2 id="5、两栏布局，下高度固定，上自适应"><a href="#5、两栏布局，下高度固定，上自适应" class="headerlink" title="5、两栏布局，下高度固定，上自适应"></a>5、两栏布局，下高度固定，上自适应</h2><h1 id="二、CSS盒模型"><a href="#二、CSS盒模型" class="headerlink" title="二、CSS盒模型"></a>二、CSS盒模型</h1><h2 id="1、基本概念：标准模型-IE模型"><a href="#1、基本概念：标准模型-IE模型" class="headerlink" title="1、基本概念：标准模型 + IE模型"></a>1、基本概念：标准模型 + IE模型</h2><h2 id="2、标准模型和IE模型的区别"><a href="#2、标准模型和IE模型的区别" class="headerlink" title="2、标准模型和IE模型的区别"></a>2、标准模型和IE模型的区别</h2><h2 id="3、CSS-如何设置这两种模型"><a href="#3、CSS-如何设置这两种模型" class="headerlink" title="3、CSS 如何设置这两种模型"></a>3、CSS 如何设置这两种模型</h2><h2 id="4、JS-如何设置获取"><a href="#4、JS-如何设置获取" class="headerlink" title="4、JS 如何设置获取"></a>4、JS 如何设置获取</h2><h2 id="5、实例题（根据盒模型解释边距重叠）"><a href="#5、实例题（根据盒模型解释边距重叠）" class="headerlink" title="5、实例题（根据盒模型解释边距重叠）"></a>5、实例题（根据盒模型解释边距重叠）</h2><h2 id="6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景"><a href="#6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景" class="headerlink" title="6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景"></a>6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景</h2><p><a href="https://zhuanlan.zhihu.com/p/25321647" target="_blank" rel="noopener">10 分钟理解 BFC 原理</a></p>
+<h1 id="三、水平垂直居中"><a href="#三、水平垂直居中" class="headerlink" title="三、水平垂直居中"></a>三、水平垂直居中</h1><p><a href="https://juejin.im/post/58f818bbb123db006233ab2a" target="_blank" rel="noopener">16种方法实现水平居中垂直居中</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/11/vue-node个人博客从零开始到部署上线（部署上线）/" rel="next" title="veu+node个人博客从零开始到部署上线（部署上线）">
+                <i class="fa fa-chevron-left"></i> veu+node个人博客从零开始到部署上线（部署上线）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/12/前端面试集锦（JS）/" rel="prev" title="前端面试集锦（JS）">
+                前端面试集锦（JS） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar-super.jpg" alt="假面对白">
+            
+              <p class="site-author-name" itemprop="name">假面对白</p>
+              <p class="site-description motion-element" itemprop="description">热爱技术，热爱生活</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Moon-Future" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、页面布局"><span class="nav-number">1.</span> <span class="nav-text">一、页面布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应"><span class="nav-number">1.1.</span> <span class="nav-text">1、假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、三栏布局，上下高度固定，中间自适应"><span class="nav-number">1.2.</span> <span class="nav-text">2、三栏布局，上下高度固定，中间自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、两栏布局，左宽度固定，右自适应"><span class="nav-number">1.3.</span> <span class="nav-text">3、两栏布局，左宽度固定，右自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、两栏布局，右宽度固定，左自适应"><span class="nav-number">1.4.</span> <span class="nav-text">4、两栏布局，右宽度固定，左自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、两栏布局，上高度固定，下自适应"><span class="nav-number">1.5.</span> <span class="nav-text">4、两栏布局，上高度固定，下自适应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、两栏布局，下高度固定，上自适应"><span class="nav-number">1.6.</span> <span class="nav-text">5、两栏布局，下高度固定，上自适应</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、CSS盒模型"><span class="nav-number">2.</span> <span class="nav-text">二、CSS盒模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、基本概念：标准模型-IE模型"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本概念：标准模型 + IE模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、标准模型和IE模型的区别"><span class="nav-number">2.2.</span> <span class="nav-text">2、标准模型和IE模型的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、CSS-如何设置这两种模型"><span class="nav-number">2.3.</span> <span class="nav-text">3、CSS 如何设置这两种模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、JS-如何设置获取"><span class="nav-number">2.4.</span> <span class="nav-text">4、JS 如何设置获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、实例题（根据盒模型解释边距重叠）"><span class="nav-number">2.5.</span> <span class="nav-text">5、实例题（根据盒模型解释边距重叠）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景"><span class="nav-number">2.6.</span> <span class="nav-text">6、BFC（边距重叠解决方案）：BFC的基本概念，BFC的原理，如何创建BFC，BFC的使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、水平垂直居中"><span class="nav-number">3.</span> <span class="nav-text">三、水平垂直居中</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">假面对白</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

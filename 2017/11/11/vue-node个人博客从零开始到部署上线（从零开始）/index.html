@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-book-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-book-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、准备工作安装node，这是必须的新版node自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西。验证是否安装成功：推荐windows下终端工具：cmder npm安装vue-cli使用npm下载依赖包是可能有些慢，所以这里可以换上淘宝的镜像cnpm。打开终端(可以在任何位置)，输入1npm inst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="veu+node个人博客从零开始到部署上线（从零开始）">
+<meta property="og:url" content="http://yoursite.com/2017/11/11/vue-node个人博客从零开始到部署上线（从零开始）/index.html">
+<meta property="og:site_name" content="假面对白">
+<meta property="og:description" content="1、准备工作安装node，这是必须的新版node自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西。验证是否安装成功：推荐windows下终端工具：cmder npm安装vue-cli使用npm下载依赖包是可能有些慢，所以这里可以换上淘宝的镜像cnpm。打开终端(可以在任何位置)，输入1npm inst">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://otr9a8wg0.bkt.clouddn.com/17-7-28/48974756.jpg">
+<meta property="og:image" content="http://otr9a8wg0.bkt.clouddn.com/17-8-2/419050.jpg">
+<meta property="og:image" content="http://otr9a8wg0.bkt.clouddn.com/17-7-28/73659113.jpg">
+<meta property="og:image" content="http://otr9a8wg0.bkt.clouddn.com/17-8-2/84026052.jpg">
+<meta property="og:updated_time" content="2019-07-26T09:38:52.336Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="veu+node个人博客从零开始到部署上线（从零开始）">
+<meta name="twitter:description" content="1、准备工作安装node，这是必须的新版node自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西。验证是否安装成功：推荐windows下终端工具：cmder npm安装vue-cli使用npm下载依赖包是可能有些慢，所以这里可以换上淘宝的镜像cnpm。打开终端(可以在任何位置)，输入1npm inst">
+<meta name="twitter:image" content="http://otr9a8wg0.bkt.clouddn.com/17-7-28/48974756.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/11/vue-node个人博客从零开始到部署上线（从零开始）/">
+
+
+
+
+
+  <title>veu+node个人博客从零开始到部署上线（从零开始） | 假面对白</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!-- Fork me on Github -->
+    <a href="https://github.com/Moon-Future/Moon-Future.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">假面对白</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我在这儿等着你</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/vue-node个人博客从零开始到部署上线（从零开始）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="假面对白">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar-super.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="假面对白">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">veu+node个人博客从零开始到部署上线（从零开始）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T00:52:41+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1、准备工作"><a href="#1、准备工作" class="headerlink" title="1、准备工作"></a>1、准备工作</h1><h2 id="安装node，这是必须的"><a href="#安装node，这是必须的" class="headerlink" title="安装node，这是必须的"></a>安装node，这是必须的</h2><p>新版node自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西。<br>验证是否安装成功：<br><img src="http://otr9a8wg0.bkt.clouddn.com/17-7-28/48974756.jpg" alt="验证是否安装成功"><br>推荐windows下终端工具：<a href="http://cmder.net/" target="_blank" rel="noopener">cmder</a></p>
+<h2 id="npm安装vue-cli"><a href="#npm安装vue-cli" class="headerlink" title="npm安装vue-cli"></a>npm安装vue-cli</h2><p>使用npm下载依赖包是可能有些慢，所以这里可以换上淘宝的镜像cnpm。<br>打开终端(可以在任何位置)，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
+<p>cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm。<br>现在来安装vue-cli：输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g vue-cli</span><br></pre></td></tr></table></figure></p>
+<p>命令中 -g 表示全局安装，会安装到node安装目录下的node_modules文件夹下，看看里面是不是多了vue-cli文件夹</p>
+<h2 id="vue-cli快速构建项目"><a href="#vue-cli快速构建项目" class="headerlink" title="vue-cli快速构建项目"></a>vue-cli快速构建项目</h2><ul>
+<li>选定一个你喜欢的文件夹，进入该文件夹下，之后创建的项目目录就在文件夹下</li>
+<li><p>打开终端，进入目标文件夹，以 D:\ 为例，使用webpack模板构建项目，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack my-blog</span><br></pre></td></tr></table></figure>
+<p>此时会自动从github下载文件目录到目标文件夹，上不了github的只能想办法了，从别处把构建好的文件全部拷过来也是可以的。</p>
+</li>
+</ul>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><ul>
+<li>进入my-blog文件夹，首先可以看到文件夹下有一个package.json文件，这个文件很重要，里面记录的项目的一些信息和运行成功运行项目必须的一些依赖包，之后安装的一些包也要记录到里面，方便别人拷贝过来你的项目时安装依赖，顺利运行。</li>
+<li><p>终端输入（要在此文件夹下）输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install</span><br><span class="line">// install可以简写为 i 即</span><br><span class="line">cnpm i</span><br></pre></td></tr></table></figure>
+<p>cnpm安装应该挺快的，安装完成后会看到文件夹下多了个node_modules文件夹，里面就是运行项目所需要的一些依赖包，可以看到此文件夹虽然不大，但是里面文件个数有上千个，所以拷贝起来也是挺麻烦的，所以把依赖包记录到package.json里面，别人只要重新下载安装一下就好了，上传到github上也方便。</p>
+</li>
+<li><p>启动项目，输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>等待浏览器自动打开。<br>npm run dev 执行的命令即是package.json里 scripts下的dev：node build/dev-server.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">   &quot;dev&quot;: &quot;node build/dev-server.js&quot;,</span><br><span class="line">   &quot;start&quot;: &quot;node build/dev-server.js&quot;,</span><br><span class="line">   &quot;build&quot;: &quot;node build/build.js&quot;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://otr9a8wg0.bkt.clouddn.com/17-8-2/419050.jpg" alt="构建项目"> </p>
+<p>默认端口为8080，若此时8080端口被占用则会出错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&gt; Starting dev server...</span><br><span class="line">events.js:160</span><br><span class="line"> throw er; // Unhandled &apos;error&apos; event</span><br><span class="line">      ^</span><br><span class="line">Error: listen EADDRINUSE :::8080  </span><br><span class="line">.....</span><br></pre></td></tr></table></figure></p>
+<p>可以在D:\my-blog\config\index.js里修改端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dev: &#123;</span><br><span class="line">    env: require(&apos;./dev.env&apos;),</span><br><span class="line">    port: 8080, // 端口号</span><br><span class="line">    autoOpenBrowser: true,</span><br><span class="line">    assetsSubDirectory: &apos;static&apos;,</span><br><span class="line">    assetsPublicPath: &apos;/&apos;,</span><br><span class="line">    proxyTable: &#123;&#125;,</span><br><span class="line">    // CSS Sourcemaps off by default because relative paths are &quot;buggy&quot;</span><br><span class="line">    // with this option, according to the CSS-Loader README</span><br><span class="line">    // (https://github.com/webpack/css-loader#sourcemaps)</span><br><span class="line">    // In our experience, they generally work as expected,</span><br><span class="line">    // just be aware of this issue when enabling this option.</span><br><span class="line">    cssSourceMap: false</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>启动成功后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Compiled successfully in 2057ms </span><br><span class="line">&gt; Listening at http://localhost:8080</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://otr9a8wg0.bkt.clouddn.com/17-7-28/73659113.jpg" alt="启动成功"></p>
+<h1 id="2、前段页面搭建"><a href="#2、前段页面搭建" class="headerlink" title="2、前段页面搭建"></a>2、前段页面搭建</h1><p><code>页面都是自己在网上搜索一些博客，然后仿照加点自己的想法写的，。。。</code></p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>首先安装项目要用到的一些组件：</p>
+<ul>
+<li>element-ui：饿了么前段组件库，可以帮助快速建立起前段页面，少些很多样式</li>
+<li>vuex：vue状态管理</li>
+<li>axios：http…  </li>
+<li>mysql：</li>
+<li>express：</li>
+<li>body-parser：</li>
+</ul>
+<p>可以依次安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cnpm install element-ui --save  （回车）</span><br><span class="line">cnpm install vuex --save  （回车）</span><br><span class="line">cnpm install axios --save  （回车）</span><br><span class="line">cnpm install mysql： --save  （回车）</span><br><span class="line">cnpm install express： --save  （回车）</span><br><span class="line">cnpm install body-parser --save  （回车）</span><br></pre></td></tr></table></figure></p>
+<p>也可以一起安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install element-ui vuex axios mysql express body-parser --save  （回车）</span><br></pre></td></tr></table></figure></p>
+<p>–save意思就是将次依赖记录在package.json里，方便别人通过npm install下载使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;axios&quot;: &quot;^0.16.2&quot;,</span><br><span class="line">    &quot;element-ui&quot;: &quot;^1.3.7&quot;,</span><br><span class="line">    &quot;vue&quot;: &quot;^2.3.3&quot;,  // 项目构建完就有了</span><br><span class="line">    &quot;vue-router&quot;: &quot;^2.5.3&quot;,  // 项目构建完就有了 当时&quot;Install vue-router&quot;选了Yes</span><br><span class="line">    &quot;vuex&quot;: &quot;^2.3.1&quot;,</span><br><span class="line">    &quot;mysql&quot;: &quot;^2.14.0&quot;,</span><br><span class="line">    &quot;body-parser&quot;: &quot;^1.17.2&quot;,</span><br><span class="line">    &quot;express&quot;: &quot;^4.14.1&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<h2 id="写页面"><a href="#写页面" class="headerlink" title="写页面"></a>写页面</h2><p>1、打开入口js文件main.js，引入element-ui组件来搭建页面 <a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank" rel="noopener">element-ui 查看官网文档</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- main.js --&gt;</span><br><span class="line">// The Vue build version to load with the `import` command</span><br><span class="line">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span><br><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import App from &apos;./App&apos;</span><br><span class="line">import router from &apos;./router/index&apos;</span><br><span class="line">import ElementUI from &apos;element-ui&apos;</span><br><span class="line">import &apos;element-ui/lib/theme-default/index.css&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI)</span><br><span class="line">Vue.config.productionTip = false</span><br><span class="line"></span><br><span class="line">/* eslint-disable no-new */</span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos;,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  template: &apos;&lt;App/&gt;&apos;,</span><br><span class="line">  components: &#123; App &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>2、每个页面都相当于一个组件，文件以.vue结尾，第一次启动成功时看到的页面就是组件Hello.vue，路径src/components/Hello.vue。路由地址在 src/router/index.js 中配置，打开修改我们待会自己要用的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- src/router/index.js --&gt;</span><br><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import Router from &apos;vue-router&apos;</span><br><span class="line">import Hello from &apos;@/components/Hello&apos;</span><br><span class="line">import Home from &apos;@/components/page/Home&apos; // 引入组件Home（待会创建）</span><br><span class="line">import Article from &apos;@/components/page/Article&apos; // 引入组件Article（待会创建）</span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    // &#123;	默认的</span><br><span class="line">    //   path: &apos;/&apos;, // http://localhost:8080/#/</span><br><span class="line">    //   name: &apos;Hello&apos;,</span><br><span class="line">    //   component: Hello</span><br><span class="line">    // &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &apos;/&apos;,  // http://localhost:8080/#/</span><br><span class="line">      name: &apos;Home&apos;,</span><br><span class="line">      component: Home,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: &apos;/&apos;,  </span><br><span class="line">      name: &apos;Article&apos;,</span><br><span class="line">      component: Article,</span><br><span class="line">      // children里的组件页面都包含在在Article组件里，&lt;router-view&gt;&lt;/router-view&gt;路由切换来显示</span><br><span class="line">      children: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: &apos;blog&apos;, // http://localhost:8080/#/blog</span><br><span class="line">          name: &apos;Blog&apos;,</span><br><span class="line">          component: resolve =&gt; require([&apos;@/components/page/Blog&apos;], resolve)  // 懒加载引入</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &apos;&apos;, // http://localhost:8080/#/about</span><br><span class="line">          name: &apos;About&apos;,</span><br><span class="line">          component: resolve =&gt; require([&apos;@/components/page/About&apos;], resolve)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &apos;comment&apos;, // http://localhost:8080/#/comment</span><br><span class="line">          name: &apos;Comment&apos;,</span><br><span class="line">          conponent: resolve =&gt; require([&apos;@/components/page/Comment&apos;], resolve)</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &apos;contact&apos;, // http://localhost:8080/#/contact</span><br><span class="line">          name: &apos;Contact&apos;,</span><br><span class="line">          component: resolve =&gt; require([&apos;@/components/page/Contact&apos;], resolve)</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>3、编写组件<br>在src/components下新建两个文件夹，分别叫common、page，用来存放我们自己创建的组件。详细代码github上查看<a href="https://github.com/Moon-Future/Vue-Node-Blog" target="_blank" rel="noopener">Vue-Node-Blog</a></p>
+<p>…</p>
+<h1 id="Express后端配置，MySql数据库连接"><a href="#Express后端配置，MySql数据库连接" class="headerlink" title="Express后端配置，MySql数据库连接"></a>Express后端配置，MySql数据库连接</h1><blockquote>
+<p>先说明为什么选用MySql数据库，网上大多都是关于mongodb的教程，我原本也是想使用mongodb，无奈公司网络限制，没有权限安装任何东西（github上不了，各种网站打不开，好苦逼的，好在npm可以使用），mongodb也是无法安装，压缩包版又缺少什么dll文件，电脑上只有MySql数据库，并且有可视化工具Navicat for MySQL操作起来也是很方便。 之前MySql基本没怎么用过，所以现在也是边学边用，一些sql语句还是找同事帮忙的，在此只为能完成功能即可，优化什么的以后再慢慢搞。</p>
+</blockquote>
+<p>后端使用Express做服务端提供数据接口，不了解的可以先去官网文档大致了解一下 <a href="http://expressjs.com/en/starter/installing.html" target="_blank" rel="noopener">Express官网</a>，在根目录my-blog下创建文件夹server用来存放后端数据库配置数据和相关方法api。<br>server文件夹下创建文件：index.js, router.js, api.js, db.js, sqlMap.js</p>
+<h2 id="1、启动文件-index-js"><a href="#1、启动文件-index-js" class="headerlink" title="1、启动文件 index.js"></a>1、启动文件 index.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const routerApi = require(&apos;./router&apos;);</span><br><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">const bodyParser = require(&apos;body-parser&apos;);</span><br><span class="line">const express = require(&apos;express&apos;);</span><br><span class="line">const app = express();</span><br><span class="line"></span><br><span class="line">app.use(bodyParser.json());</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;extended: false&#125;));</span><br><span class="line"></span><br><span class="line">// 后端api路由</span><br><span class="line">app.use(&apos;/api&apos;, routerApi);</span><br><span class="line"></span><br><span class="line">// 监听端口</span><br><span class="line">app.listen(3000);</span><br><span class="line">console.log(&apos;success listen at port:3000......&apos;);</span><br></pre></td></tr></table></figure>
+<h2 id="2、express路由配置-router-js"><a href="#2、express路由配置-router-js" class="headerlink" title="2、express路由配置 router.js"></a>2、express路由配置 router.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;)</span><br><span class="line">var router = express.Router();</span><br><span class="line">var api = require(&apos;./api&apos;)</span><br><span class="line"></span><br><span class="line">router.get(&apos;/blog/getBlogAll&apos;, function(req, res, next) &#123;</span><br><span class="line">  // api.getBlogAll(req, res, next);</span><br><span class="line">  res.send(&apos;Hello World!&apos;);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure>
+<h2 id="3、数据库连接配置（登录数据库）db-js"><a href="#3、数据库连接配置（登录数据库）db-js" class="headerlink" title="3、数据库连接配置（登录数据库）db.js"></a>3、数据库连接配置（登录数据库）db.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- db.js --&gt;</span><br><span class="line">// 数据库连接配置</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  mysql: &#123;</span><br><span class="line">    host: &apos;localhost&apos;,</span><br><span class="line">    user: &apos;root&apos;,</span><br><span class="line">    password: &apos;123456&apos;,</span><br><span class="line">    database: &apos;node_blog&apos;,</span><br><span class="line">    port: &apos;3306&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>user、password视自己数据库的连接信息配置，不懂的百度哈，后面也可以测试看是否连接成功，我的数据库连接信息如下：<br><img src="http://otr9a8wg0.bkt.clouddn.com/17-8-2/84026052.jpg" alt="连接信息">  </p>
+<h2 id="4、sql语句-sqlMap-js"><a href="#4、sql语句-sqlMap-js" class="headerlink" title="4、sql语句 sqlMap.js"></a>4、sql语句 sqlMap.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var sqlMap = &#123;</span><br><span class="line">  blog: &#123;</span><br><span class="line">    insert:&apos;INSERT INTO user(user_id,author,title,tyep,loadURL,tag,summary,posy_time,upd_time) VALUES(8023,陈亮,?,0,$,tag,?,?,?)&apos;,</span><br><span class="line">    update:&apos;update blog set name=?, age=? where id=?&apos;,</span><br><span class="line">    delete: &apos;delete from blog where id=?&apos;,</span><br><span class="line">    queryById: &apos;select * from blog where id=?&apos;,</span><br><span class="line">    queryAll: &apos;select * from blog&apos;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = sqlMap;</span><br></pre></td></tr></table></figure>
+<h2 id="5、数据库连接、api接口-api-js"><a href="#5、数据库连接、api接口-api-js" class="headerlink" title="5、数据库连接、api接口 api.js"></a>5、数据库连接、api接口 api.js</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> mysqlConf = <span class="built_in">require</span>(<span class="string">'./db'</span>);</span><br><span class="line"><span class="keyword">var</span> sqlMap = <span class="built_in">require</span>(<span class="string">'./sqlMapping'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数据库</span></span><br><span class="line"><span class="keyword">var</span> pool = mysql.createPool(&#123;</span><br><span class="line">  host: mysqlConf.mysql.host,</span><br><span class="line">  user: mysqlConf.mysql.user,</span><br><span class="line">  password: mysqlConf.mysql.password,</span><br><span class="line">  database: mysqlConf.mysql.database,</span><br><span class="line">  port: mysqlConf.mysql.port</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向前台返回JSON方法的简单封装</span></span><br><span class="line"><span class="keyword">var</span> jsonWrite = <span class="function"><span class="keyword">function</span> (<span class="params">res, data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> data === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      code:<span class="string">'1'</span>,</span><br><span class="line">      msg: <span class="string">'操作失败'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res.json(data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  getBlogAll(req, res, next) &#123;</span><br><span class="line">    pool.getConnection(<span class="function">(<span class="params">err, connection</span>) =&gt;</span> &#123;</span><br><span class="line">      connection.query(sqlMap.blog.queryAll, (err, result) =&gt; &#123;</span><br><span class="line">        jsonWrite(res, result);</span><br><span class="line">        connection.release();</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  getTagAll(req, res, next) &#123;</span><br><span class="line">    pool.getConnection(<span class="function">(<span class="params">err, connection</span>) =&gt;</span> &#123;</span><br><span class="line">      connection.query(sqlMap.tag.queryAll, (err, result) =&gt; &#123;</span><br><span class="line">        jsonWrite(res, result);</span><br><span class="line">        connection.release();</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/11/vue-node个人博客从零开始到部署上线（部署上线）/" rel="prev" title="veu+node个人博客从零开始到部署上线（部署上线）">
+                veu+node个人博客从零开始到部署上线（部署上线） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar-super.jpg" alt="假面对白">
+            
+              <p class="site-author-name" itemprop="name">假面对白</p>
+              <p class="site-description motion-element" itemprop="description">热爱技术，热爱生活</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Moon-Future" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1、准备工作"><span class="nav-number">1.</span> <span class="nav-text">1、准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node，这是必须的"><span class="nav-number">1.1.</span> <span class="nav-text">安装node，这是必须的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装vue-cli"><span class="nav-number">1.2.</span> <span class="nav-text">npm安装vue-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli快速构建项目"><span class="nav-number">1.3.</span> <span class="nav-text">vue-cli快速构建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行项目"><span class="nav-number">1.4.</span> <span class="nav-text">运行项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、前段页面搭建"><span class="nav-number">2.</span> <span class="nav-text">2、前段页面搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装依赖"><span class="nav-number">2.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写页面"><span class="nav-number">2.2.</span> <span class="nav-text">写页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Express后端配置，MySql数据库连接"><span class="nav-number">3.</span> <span class="nav-text">Express后端配置，MySql数据库连接</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、启动文件-index-js"><span class="nav-number">3.1.</span> <span class="nav-text">1、启动文件 index.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、express路由配置-router-js"><span class="nav-number">3.2.</span> <span class="nav-text">2、express路由配置 router.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、数据库连接配置（登录数据库）db-js"><span class="nav-number">3.3.</span> <span class="nav-text">3、数据库连接配置（登录数据库）db.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、sql语句-sqlMap-js"><span class="nav-number">3.4.</span> <span class="nav-text">4、sql语句 sqlMap.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、数据库连接、api接口-api-js"><span class="nav-number">3.5.</span> <span class="nav-text">5、数据库连接、api接口 api.js</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">假面对白</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

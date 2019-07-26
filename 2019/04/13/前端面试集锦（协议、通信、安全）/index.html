@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-book-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-book-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试,HTTP,TCP,通信,AJAX,安全,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、HTTP协议类1、HTTP协议的主要特点 1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。 2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。 3、无连接：无连接的含义是限制每次">
+<meta name="keywords" content="面试,HTTP,TCP,通信,AJAX,安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试集锦（协议、通信、安全）">
+<meta property="og:url" content="http://yoursite.com/2019/04/13/前端面试集锦（协议、通信、安全）/index.html">
+<meta property="og:site_name" content="假面对白">
+<meta property="og:description" content="一、HTTP协议类1、HTTP协议的主要特点 1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。 2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。 3、无连接：无连接的含义是限制每次">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-26T09:38:52.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试集锦（协议、通信、安全）">
+<meta name="twitter:description" content="一、HTTP协议类1、HTTP协议的主要特点 1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。 2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。 3、无连接：无连接的含义是限制每次">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/13/前端面试集锦（协议、通信、安全）/">
+
+
+
+
+
+  <title>前端面试集锦（协议、通信、安全） | 假面对白</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!-- Fork me on Github -->
+    <a href="https://github.com/Moon-Future/Moon-Future.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">假面对白</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我在这儿等着你</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/13/前端面试集锦（协议、通信、安全）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="假面对白">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar-super.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="假面对白">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端面试集锦（协议、通信、安全）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-13T09:30:00+08:00">
+                2019-04-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、HTTP协议类"><a href="#一、HTTP协议类" class="headerlink" title="一、HTTP协议类"></a>一、HTTP协议类</h1><h2 id="1、HTTP协议的主要特点"><a href="#1、HTTP协议的主要特点" class="headerlink" title="1、HTTP协议的主要特点"></a>1、HTTP协议的主要特点</h2><ul>
+<li>1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</li>
+<li>2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</li>
+<li>3、无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</li>
+<li>4、无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</li>
+</ul>
+<h2 id="2、HTTP报文的组成部分"><a href="#2、HTTP报文的组成部分" class="headerlink" title="2、HTTP报文的组成部分"></a>2、HTTP报文的组成部分</h2><ul>
+<li>请求报文<ul>
+<li>请求行</li>
+<li>请求头</li>
+<li>空行</li>
+<li>请求体</li>
+</ul>
+</li>
+<li>响应报文<ul>
+<li>状态行</li>
+<li>响应头</li>
+<li>空行</li>
+<li>响应体</li>
+</ul>
+</li>
+</ul>
+<h2 id="3、HTTP方法"><a href="#3、HTTP方法" class="headerlink" title="3、HTTP方法"></a>3、HTTP方法</h2><ul>
+<li>GET 获取资源</li>
+<li>POST 传输资源</li>
+<li>PUT 更新资源</li>
+<li>DELETE 删除资源</li>
+<li>HEAD 获取报文首部</li>
+</ul>
+<h2 id="4、POST和GET的区别"><a href="#4、POST和GET的区别" class="headerlink" title="4、POST和GET的区别"></a>4、POST和GET的区别</h2><ul>
+<li>GET在浏览器回退时时无害的，而POST会再次提交请求（!）</li>
+<li>GET产生的URL地址可以被收藏，而POST不可以</li>
+<li>GET请求会被浏览器主动缓存，而POST不会，除非手动设置（!）</li>
+<li>GET请求只能进行url编码，而POST支持多种编码方式</li>
+<li>GET请求参数会被完整保留在浏览器记录里，而POST中的参数不会被保留（!）</li>
+<li>GET请求的URL中传送的参数是有长度限制的，而POST没有限制（!）</li>
+<li>对参数的数据类型，GET值接受ASCII字符，而POST没有显示</li>
+<li>GET比POST更不安全，因为参数直接暴露在URL上，所有不能用来传递敏感信息</li>
+<li>GET参数通过URL传递，POST放在Request body中（!）</li>
+</ul>
+<h2 id="5、HTTP状态码"><a href="#5、HTTP状态码" class="headerlink" title="5、HTTP状态码"></a>5、HTTP状态码</h2><ul>
+<li>1xx：指示信息 - 表示请求已成功，继续处理</li>
+<li>2xx：成功 - 表示请求已成功接收<ul>
+<li>200 OK：客户端请求成功</li>
+<li>206 Partial Content：客户发送了一个带有Range头的GET请求</li>
+</ul>
+</li>
+<li>3xx：重定向 - 要完成请求必须经行更进一步的操作<ul>
+<li>301 Moved Permanently：所请求的页面已经转移至新的url</li>
+<li>302 Found：所请求的页面已经临时转移至新的url</li>
+<li>304 Not Modified：客户端有缓冲的文档并发出了一个条件性的请求，服务器告诉客户，原来缓冲的文档还可以继续使用</li>
+</ul>
+</li>
+<li>4xx：客户端错误 - 请求有语法错误或请求无法实现<ul>
+<li>400 Bad Request：客户端请求有语法错误，不能被服务器所理解</li>
+<li>401 Unauthorized：请求未被授权，这个状态码必须和WWW-Authenticate抱头域一起使用</li>
+<li>403 Forbidden：对请求页面的访问被禁止</li>
+<li>404 Not Found：请求资源不存在</li>
+</ul>
+</li>
+<li>5xx：服务器错误 - 服务器未能实现合法的请求<ul>
+<li>500 Internal Server Error：服务器发生不可预期的错误，原来缓存的文档还可以继续使用</li>
+<li>503 Server Unavailable：请求未完成，服务器临时过载或当机，一段时间后可能恢复正常</li>
+</ul>
+</li>
+</ul>
+<h2 id="6、什么是持久连接"><a href="#6、什么是持久连接" class="headerlink" title="6、什么是持久连接"></a>6、什么是持久连接</h2><p>HTTP协议采用“请求-应答”模式，当使用普通模式，即非 Keep-Alive 模式时，每个请求/应答客户和服务器都要新建一个连接，完成之后立即断开连接（HTTP协议为无连接的协议）。<br>当使用 Keep-Alive 模式（HTTP/1.1，又称持久连接、连接重用）时，Keep-Alive 功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive 功能避免了建立或者重新建立连接。</p>
+<h2 id="7、什么是管线化"><a href="#7、什么是管线化" class="headerlink" title="7、什么是管线化"></a>7、什么是管线化</h2><pre><code>HTTP管线化是将多个HTTP请求（request）整批提交的技术，而在传送过程中不需先等待服务端的回应。
+</code></pre><p>在使用持久连接的情况下，某个连接上消息的传递类似于：请求1 -&gt; 响应1 -&gt; 请求2 -&gt; 响应2 -&gt; 请求3 -&gt; 响应3；<br>管线化技术将某个连接上的消息变成了雷士这样：请求1 -&gt; 请求2 -&gt; 请求3 -&gt; 响应1 -&gt; 响应2 -&gt; 响应3  </p>
+<ul>
+<li>管线化机制通过持久连接完成，仅 HTTP/1.1 支持此技术（!）</li>
+<li>只有 GET 和 HEAD 请求可以进行管线化，而 POST 则有所限制（!）</li>
+<li>初次创建连接时不应启动管线机制，因为对方（服务器）不一定支持 HTTP/1.1 版本的协议（!）</li>
+<li>管线化不会影响响应到来的顺序，如上面的例子所示，响应返回的顺序并未改变</li>
+<li>HTTP/1.1 要求服务器端支持管线化，但并不要求服务器端也对响应进行管线化处理，只是要求对于管线化的请求不失败即可</li>
+<li>由于上面提到的服务器端问题，开启管线化很可能并不会带来大幅度的性能提升，而且很多服务器端和代理程序对管线化的支持并不好，因此现代浏览器Chrome 和 Firefox 默认并未开启管线化支持</li>
+</ul>
+<h1 id="二、-TCP"><a href="#二、-TCP" class="headerlink" title="二、 TCP"></a>二、 TCP</h1><h1 id="三、通信类"><a href="#三、通信类" class="headerlink" title="三、通信类"></a>三、通信类</h1><h2 id="1、什么时同源策略及限制"><a href="#1、什么时同源策略及限制" class="headerlink" title="1、什么时同源策略及限制"></a>1、什么时同源策略及限制</h2><p>同源策略限制从一个源加载的文档或脚本如何与来自另一个源的资源经行交互。这是一个用户隔离潜在恶意文件的关键的安全机制。</p>
+<ul>
+<li>Cookie、LocalStroage 和 IndexDB 无法读取</li>
+<li>DOM 无法获得</li>
+<li>Ajax 请求不能发送</li>
+</ul>
+<h2 id="2、前后端如何通信"><a href="#2、前后端如何通信" class="headerlink" title="2、前后端如何通信"></a>2、前后端如何通信</h2><ul>
+<li>Ajax</li>
+<li>WebSocket</li>
+<li>CORS</li>
+</ul>
+<h2 id="3、如何创建Ajax"><a href="#3、如何创建Ajax" class="headerlink" title="3、如何创建Ajax"></a>3、如何创建Ajax</h2><ul>
+<li>XMLHttpRequest 对象的工作流程</li>
+<li>兼容性处理</li>
+<li>事件的触发条件</li>
+<li>事件的触发顺序<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">opt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> xhr = XMLHttpRequest ? <span class="keyword">new</span> XMLHttpReuqes() : <span class="keyword">new</span> <span class="built_in">window</span>.ActiveObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">    <span class="keyword">var</span> data = opt.data,</span><br><span class="line">        url = opt.url,</span><br><span class="line">        type = opt.type.toUpperCase(),</span><br><span class="line">        dataArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> data) &#123;</span><br><span class="line">        dataArr.push(k + <span class="string">'='</span> + data[k]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (type === <span class="string">'GET'</span>) &#123;</span><br><span class="line">        url = url + <span class="string">'?'</span> + dataArr.join(<span class="string">'&amp;'</span>);</span><br><span class="line">        xhr.open(type, url.replace(<span class="regexp">/\?$/g</span>, <span class="string">''</span>), <span class="literal">true</span>);</span><br><span class="line">        xhr.send();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (type === <span class="string">'POST'</span>) &#123;</span><br><span class="line">        xhr.open(type, url, <span class="literal">true</span>);</span><br><span class="line">        xhr.setReuqestHeader(<span class="string">'Content-type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">        xhr.send(dataArr.join(<span class="string">'&amp;'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.status === <span class="number">200</span> || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (opt.success &amp;&amp; opt.success <span class="keyword">instanceof</span> <span class="built_in">Function</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> res = xhr.responseText;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span> res === <span class="string">'string'</span>) &#123;</span><br><span class="line">                    res = <span class="built_in">JSON</span>.parse(res);</span><br><span class="line">                    opt.success.call(xhr, res);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (opt.error &amp;&amp; opt.error <span class="keyword">instanceof</span> <span class="built_in">Function</span>) &#123;</span><br><span class="line">                opt.error.call(xhr, res);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4、跨域通信的几种方式"><a href="#4、跨域通信的几种方式" class="headerlink" title="4、跨域通信的几种方式"></a>4、跨域通信的几种方式</h2><ul>
+<li>JSONP</li>
+<li>Hash</li>
+<li>postMessage</li>
+<li>WebSocket</li>
+<li>CORS</li>
+</ul>
+<h1 id="四、安全类"><a href="#四、安全类" class="headerlink" title="四、安全类"></a>四、安全类</h1><h2 id="1、CSRF"><a href="#1、CSRF" class="headerlink" title="1、CSRF"></a>1、CSRF</h2><ul>
+<li>基本概念和缩写<br>跨站请求伪造，Cross-site request forgery</li>
+<li>攻击原理</li>
+<li>防御措施<br>1、Token验证<br>2、Referer验证<br>3、隐藏令牌</li>
+</ul>
+<h2 id="2、XSS"><a href="#2、XSS" class="headerlink" title="2、XSS"></a>2、XSS</h2><ul>
+<li>基本概念和缩写<br>跨站脚本攻击，Cross-site scripting</li>
+<li>攻击原理</li>
+<li>防御措施</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          
+            <a href="/tags/TCP/" rel="tag"># TCP</a>
+          
+            <a href="/tags/通信/" rel="tag"># 通信</a>
+          
+            <a href="/tags/AJAX/" rel="tag"># AJAX</a>
+          
+            <a href="/tags/安全/" rel="tag"># 安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/12/前端面试集锦（JS）/" rel="next" title="前端面试集锦（JS）">
+                <i class="fa fa-chevron-left"></i> 前端面试集锦（JS）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar-super.jpg" alt="假面对白">
+            
+              <p class="site-author-name" itemprop="name">假面对白</p>
+              <p class="site-description motion-element" itemprop="description">热爱技术，热爱生活</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Moon-Future" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、HTTP协议类"><span class="nav-number">1.</span> <span class="nav-text">一、HTTP协议类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、HTTP协议的主要特点"><span class="nav-number">1.1.</span> <span class="nav-text">1、HTTP协议的主要特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、HTTP报文的组成部分"><span class="nav-number">1.2.</span> <span class="nav-text">2、HTTP报文的组成部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、HTTP方法"><span class="nav-number">1.3.</span> <span class="nav-text">3、HTTP方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、POST和GET的区别"><span class="nav-number">1.4.</span> <span class="nav-text">4、POST和GET的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、HTTP状态码"><span class="nav-number">1.5.</span> <span class="nav-text">5、HTTP状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、什么是持久连接"><span class="nav-number">1.6.</span> <span class="nav-text">6、什么是持久连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、什么是管线化"><span class="nav-number">1.7.</span> <span class="nav-text">7、什么是管线化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、-TCP"><span class="nav-number">2.</span> <span class="nav-text">二、 TCP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、通信类"><span class="nav-number">3.</span> <span class="nav-text">三、通信类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、什么时同源策略及限制"><span class="nav-number">3.1.</span> <span class="nav-text">1、什么时同源策略及限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、前后端如何通信"><span class="nav-number">3.2.</span> <span class="nav-text">2、前后端如何通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、如何创建Ajax"><span class="nav-number">3.3.</span> <span class="nav-text">3、如何创建Ajax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、跨域通信的几种方式"><span class="nav-number">3.4.</span> <span class="nav-text">4、跨域通信的几种方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、安全类"><span class="nav-number">4.</span> <span class="nav-text">四、安全类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、CSRF"><span class="nav-number">4.1.</span> <span class="nav-text">1、CSRF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、XSS"><span class="nav-number">4.2.</span> <span class="nav-text">2、XSS</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">假面对白</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
